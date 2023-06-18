@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/homepage.dart';
+import 'package:netflix_clone/apicall.dart';
+import 'package:netflix_clone/homescreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home:  MyWidget(),
+      home:  HomeScreen(),
     );
   }
 }
