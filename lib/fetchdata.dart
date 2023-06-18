@@ -88,6 +88,9 @@ class _DataWidgetState extends State<DataWidget> {
                     final title = user['jawSummary']['title'];
                     final photo = user['jawSummary']['backgroundImage']['url'];
                     final description = user['jawSummary']['synopsis'];
+                    final imageurl =
+                        user['jawSummary']['backgroundImage']['url'];
+                    final logoimgurl = user['jawSummary']['logoImage']['url'];
                     return GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -95,6 +98,8 @@ class _DataWidgetState extends State<DataWidget> {
                           MaterialPageRoute(
                             builder: (context) => Details(
                               desc: description,
+                              backgroundimg: imageurl,
+                              logoimgurl: logoimgurl,
                             ),
                           ),
                         );

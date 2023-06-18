@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_clone/details.dart';
 
 class MyWidget extends StatefulWidget {
   final String text;
@@ -67,29 +68,49 @@ class _MyWidgetState extends State<MyWidget> {
                           final title = user['jawSummary']['title'];
                           final photo =
                               user['jawSummary']['backgroundImage']['url'];
-                          return Column(
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20)),
-                                  margin: EdgeInsets.all(8),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(12),
-                                    child: Image.network(
-                                      photo,
-                                      fit: BoxFit.cover,
-                                      alignment: Alignment.center,
+                          final description = user['jawSummary']['synopsis'];
+                          final imageurl =
+                              user['jawSummary']['backgroundImage']['url'];
+                          final logoimgurl =
+                              user['jawSummary']['logoImage']['url'];
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Details(
+                                    desc: description,
+                                    backgroundimg: imageurl,
+                                    logoimgurl: logoimgurl,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    margin: EdgeInsets.all(8),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12),
+                                      child: Image.network(
+                                        photo,
+                                        fit: BoxFit.cover,
+                                        alignment: Alignment.center,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              Text(
-                                title,
-                                style: GoogleFonts.bebasNeue(
-                                    color: Colors.white, fontSize: 12),
-                              )
-                            ],
+                                Text(
+                                  title,
+                                  style: GoogleFonts.bebasNeue(
+                                      color: Colors.white, fontSize: 12),
+                                )
+                              ],
+                            ),
                           );
                         },
                       ),
