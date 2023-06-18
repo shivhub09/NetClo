@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 
 class MyWidget extends StatefulWidget {
+  final String text;
+  MyWidget({required this.text});
   @override
   _MyWidgetState createState() => _MyWidgetState();
 }
@@ -25,13 +27,26 @@ class _MyWidgetState extends State<MyWidget> {
         backgroundColor: Colors.black,
         body: Container(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                decoration: BoxDecoration(color: Colors.black),
-                height: 70,
-                child: Image.asset(
-                  "assets/netflix logo.png",
-                  fit: BoxFit.fill,
+              Center(
+                child: Container(
+                  decoration: BoxDecoration(color: Colors.black),
+                  height: 70,
+                  child: Image.asset(
+                    "assets/netflix logo.png",
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10.0, 0, 0, 0),
+                child: Text(
+                  widget.text,
+                  style: GoogleFonts.bebasNeue(
+                    color: Colors.white,
+                    fontSize: 30,
+                  ),
                 ),
               ),
               Expanded(
@@ -79,8 +94,6 @@ class _MyWidgetState extends State<MyWidget> {
                         },
                       ),
               ),
-
-              
             ],
           ),
         ),
@@ -93,10 +106,10 @@ class _MyWidgetState extends State<MyWidget> {
       'netflix-data.p.rapidapi.com',
       '/search/',
       {
-        'query': 'netflix',
+        'query': widget.text,
         'offset': '0',
-        'limit_titles': '10',
-        'limit_suggestions': '10',
+        'limit_titles': '30',
+        'limit_suggestions': '30',
       },
     );
 
@@ -105,10 +118,8 @@ class _MyWidgetState extends State<MyWidget> {
       'X-RapidAPI-Host': 'netflix-data.p.rapidapi.com',
     };
 
-    print(url);
-
     final response = await http.get(url, headers: headers);
-    print(response.body);
+
     final body = response.body;
     final json = jsonDecode(body);
 
@@ -116,7 +127,5 @@ class _MyWidgetState extends State<MyWidget> {
       isLoading = false; // Set isLoading to false once data is fetched
       users = json["titles"];
     });
-    print("loading");
-    print(users);
   }
 }
