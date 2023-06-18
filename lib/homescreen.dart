@@ -123,6 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             DataWidget(text: "Trending"),
             DataWidget(text: "korean"),
+            DataWidget(text: "hindi"),
             DataWidget(text: "anime"),
           ],
         ),

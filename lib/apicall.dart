@@ -129,8 +129,8 @@ class _MyWidgetState extends State<MyWidget> {
       {
         'query': widget.text,
         'offset': '0',
-        'limit_titles': '30',
-        'limit_suggestions': '30',
+        'limit_titles': '50',
+        'limit_suggestions': '50',
       },
     );
 
