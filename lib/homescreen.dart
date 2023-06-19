@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/fetchdata.dart';
 import 'package:netflix_clone/search.dart';
 
@@ -10,7 +11,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String enteredText = '';
+  String _text = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,26 +71,62 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Search(),
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 10),
+                        child: SizedBox(
+                          height: 50,
+                          child: Container(
+                            margin: EdgeInsets.symmetric(
+                              horizontal: 20,
                             ),
-                          );
-                        },
-                        child: Container(
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.search_rounded,
-                                color: Colors.grey.shade300,
+                            decoration: BoxDecoration(
+                                color: Colors.transparent,
+                                borderRadius: BorderRadius.circular(25),
+                                border: Border.all(color: Colors.white)),
+                            child: TextFormField(
+                              onFieldSubmitted: (value) {
+                                setState(() {
+                                  _text = value;
+                                  print(_text);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Search(
+                                        searchtext: _text,
+                                      ),
+                                    ),
+                                  );
+                                  Search(
+                                    searchtext: _text,
+                                  );
+                                });
+                              },
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                              cursorColor: Colors.white,
+                              textInputAction: TextInputAction.next,
+                              style: GoogleFonts.montserrat(
+                                color: Colors.red,
                               ),
-                            ],
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                errorStyle: GoogleFonts.montserrat(),
+                                hintText: 'Search',
+                                hintStyle:
+                                    GoogleFonts.montserrat(color: Colors.grey),
+                                icon: Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(10, 8, 10, 8),
+                                  child: Icon(
+                                    Icons.search,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                   Row(

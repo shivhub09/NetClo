@@ -9,7 +9,8 @@ import 'package:http/http.dart' as http;
 import 'package:netflix_clone/details.dart';
 
 class Search extends StatefulWidget {
-  const Search({super.key});
+  late String searchtext;
+  Search({required this.searchtext});
 
   @override
   State<Search> createState() => _SearchState();
@@ -21,115 +22,151 @@ class _SearchState extends State<Search> {
   List<dynamic> users = [];
   List<dynamic> reversed = [];
   bool isLoading = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    fetchdata();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('TextFormField Example'),
-      ),
+      backgroundColor: Colors.black,
       body: Padding(
         padding: EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Name',
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Container(
+                decoration: BoxDecoration(color: Colors.black),
+                height: 70,
+                child: Image.asset(
+                  "assets/netflix logo.png",
+                  fit: BoxFit.fill,
                 ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your name';
-                  }
-                  return null;
-                },
-                onChanged: (value) {
-                  setState(() {
-                    _name = value;
-                  });
-                },
               ),
-              SizedBox(height: 16.0),
-              TextButton(
-                onPressed: () {
-                  fetchdata();
-                },
-                child: Text('Submit'),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10.0, 0, 0, 0),
+              child: Text(
+                "Search Related to : ${widget.searchtext}",
+                style: GoogleFonts.bebasNeue(
+                  color: Colors.white,
+                  fontSize: 30,
+                ),
               ),
-              Expanded(
-                child: isLoading
-                    ? Center(
-                        child: CircularProgressIndicator(
-                          color: Colors.red,
-                        ),
-                      )
-                    : ListView.builder(
-                        itemCount: users.length,
-                        itemBuilder: (context, index) {
-                          final user = reversed[index];
-                          final title = user['jawSummary']['title'];
-                          final photo =
-                              user['jawSummary']['backgroundImage']['url'];
-                          final description = user['jawSummary']['synopsis'];
-                          final imageurl =
-                              user['jawSummary']['backgroundImage']['url'];
-                          final logoimgurl =
-                              user['jawSummary']['logoImage']['url'];
-                          List<Map<String, dynamic>> genres =
-                              (user['jawSummary']['genres'] as List<dynamic>)
-                                  .cast<Map<String, dynamic>>();
-                          List<String> genrelist = genres
-                              .map((item) => item["name"] as String)
-                              .toList();
-                          List<Map<String, dynamic>> castlist =
-                              (user['jawSummary']['cast'] as List<dynamic>)
-                                  .cast<Map<String, dynamic>>();
-                          List<String> cast = castlist
-                              .map((item) => item["name"] as String)
-                              .toList();
-                          return SizedBox(
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  height: 280,
-                                  width: 200,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => Details(
-                                              title: title,
-                                              desc: description,
-                                              backgroundimg: imageurl,
-                                              logoimgurl: logoimgurl,
-                                              genres: genrelist,
-                                              castlist: cast,
-                                            ),
+            ),
+            SizedBox(height: 16.0),
+            Expanded(
+              child: isLoading
+                  ? Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.red,
+                      ),
+                    )
+                  : ListView.builder(
+                      itemCount: users.length,
+                      itemBuilder: (context, index) {
+                        final user = reversed[index];
+                        final title = user['jawSummary']['title'];
+                        final photo =
+                            user['jawSummary']['backgroundImage']['url'];
+                        final description = user['jawSummary']['synopsis'];
+                        final type = user['summary']['type'];
+                        final imageurl =
+                            user['jawSummary']['backgroundImage']['url'];
+                        final logoimgurl =
+                            user['jawSummary']['logoImage']['url'];
+                        List<Map<String, dynamic>> genres =
+                            (user['jawSummary']['genres'] as List<dynamic>)
+                                .cast<Map<String, dynamic>>();
+                        List<String> genrelist = genres
+                            .map((item) => item["name"] as String)
+                            .toList();
+                        List<Map<String, dynamic>> castlist =
+                            (user['jawSummary']['cast'] as List<dynamic>)
+                                .cast<Map<String, dynamic>>();
+                        List<String> cast = castlist
+                            .map((item) => item["name"] as String)
+                            .toList();
+                        return SizedBox(
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                height: 280,
+                                width: 200,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Details(
+                                            title: title,
+                                            desc: description,
+                                            backgroundimg: imageurl,
+                                            logoimgurl: logoimgurl,
+                                            genres: genrelist,
+                                            castlist: cast,
                                           ),
-                                        );
-                                      },
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(12),
-                                        child: Image.network(
-                                          photo,
-                                          fit: BoxFit.cover,
-                                          alignment: Alignment.center,
                                         ),
+                                      );
+                                    },
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12),
+                                      child: Image.network(
+                                        photo,
+                                        fit: BoxFit.cover,
+                                        alignment: Alignment.center,
                                       ),
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
-                          );
-                        },
-                      ),
-              ),
-            ],
-          ),
+                              ),
+                              SizedBox(
+                                height: 280,
+                                width: 160,
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(vertical: 8),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        title,
+                                        style: GoogleFonts.bebasNeue(
+                                            fontSize: 25, color: Colors.white),
+                                      ),
+                                      Text(
+                                        type,
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 18,
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                      Flexible(
+                                          child: Text(
+                                        description,
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 13,
+                                          color: Colors.grey,
+                                        ),
+                                      )),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+            ),
+          ],
         ),
       ),
     );
@@ -140,7 +177,7 @@ class _SearchState extends State<Search> {
       'netflix-data.p.rapidapi.com',
       '/search/',
       {
-        'query': _name,
+        'query': widget.searchtext,
         'offset': '0',
         'limit_titles': '3',
         'limit_suggestions': '1',
