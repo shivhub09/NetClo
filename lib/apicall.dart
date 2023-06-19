@@ -79,16 +79,24 @@ class _MyWidgetState extends State<MyWidget> {
                           List<String> genrelist = genres
                               .map((item) => item["name"] as String)
                               .toList();
+                          List<Map<String, dynamic>> castlist =
+                              (user['jawSummary']['cast'] as List<dynamic>)
+                                  .cast<Map<String, dynamic>>();
+                          List<String> cast = castlist
+                              .map((item) => item["name"] as String)
+                              .toList();
                           return GestureDetector(
                             onTap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => Details(
+                                    title: title,
                                     desc: description,
                                     backgroundimg: imageurl,
                                     logoimgurl: logoimgurl,
                                     genres: genrelist,
+                                    castlist: cast,
                                   ),
                                 ),
                               );
