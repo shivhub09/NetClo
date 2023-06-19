@@ -91,6 +91,11 @@ class _DataWidgetState extends State<DataWidget> {
                     final imageurl =
                         user['jawSummary']['backgroundImage']['url'];
                     final logoimgurl = user['jawSummary']['logoImage']['url'];
+                    List<Map<String, dynamic>> genres =
+                        (user['jawSummary']['genres'] as List<dynamic>)
+                            .cast<Map<String, dynamic>>();
+                    List<String> genrelist =
+                        genres.map((item) => item["name"] as String).toList();
                     return GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -100,6 +105,7 @@ class _DataWidgetState extends State<DataWidget> {
                               desc: description,
                               backgroundimg: imageurl,
                               logoimgurl: logoimgurl,
+                              genres: genrelist,
                             ),
                           ),
                         );

@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Container(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 30,
+                          horizontal: 40,
                           vertical: 5,
                         ),
                         decoration: BoxDecoration(
@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            DataWidget(text: "Trending"),
+            DataWidget(text: "Popular on Netflix"),
             DataWidget(text: "korean"),
             DataWidget(text: "hindi"),
             DataWidget(text: "anime"),
