@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/fetchdata.dart';
+import 'package:netflix_clone/profile.dart';
 import 'package:netflix_clone/search.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -40,10 +41,26 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Image.asset(
-                            "assets/N.png",
-                            fit: BoxFit.fill,
-                            height: 30,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Profile(),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              padding: EdgeInsetsDirectional.all(6),
+                              decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.circular(30)),
+                              child: Image.asset(
+                                "assets/N.png",
+                                fit: BoxFit.fill,
+                                height: 20,
+                              ),
+                            ),
                           ),
                           const Text(
                             "TV Shows",
