@@ -106,8 +106,9 @@ class _MyWidgetState extends State<MyWidget> {
                                 Expanded(
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    width: 200,
                                     margin: EdgeInsets.all(8),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(12),
@@ -122,8 +123,10 @@ class _MyWidgetState extends State<MyWidget> {
                                 Text(
                                   title,
                                   style: GoogleFonts.bebasNeue(
-                                      color: Colors.white, fontSize: 12),
-                                )
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
+                                ),
                               ],
                             ),
                           );

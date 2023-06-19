@@ -74,9 +74,9 @@ class _DetailsState extends State<Details> {
                     Icons.play_arrow,
                     color: Colors.white,
                   ),
-                  const Text(
+                  Text(
                     "Play",
-                    style: TextStyle(
+                    style: GoogleFonts.montserrat(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -123,7 +123,7 @@ class _DetailsState extends State<Details> {
                           margin: EdgeInsets.only(left: 0, right: 10),
                           child: Text(
                             genreName,
-                            style: const TextStyle(
+                            style: GoogleFonts.montserrat(
                                 color: Colors.white, fontSize: 12),
                           ),
                         ),
@@ -149,7 +149,7 @@ class _DetailsState extends State<Details> {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              margin: EdgeInsets.symmetric(horizontal: 15),
               child: Text(
                 "Cast",
                 style: GoogleFonts.bebasNeue(color: Colors.white, fontSize: 30),
@@ -161,11 +161,24 @@ class _DetailsState extends State<Details> {
                 itemBuilder: (context, index) {
                   final castName = widget.castlist[index];
                   return Container(
-                    padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                    margin: EdgeInsets.only(left: 0, right: 10),
-                    child: Text(
-                      castName,
-                      style: const TextStyle(color: Colors.white, fontSize: 12),
+                    margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    padding: EdgeInsets.fromLTRB(5, 0, 10, 5),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.circle,
+                          color: Colors.white,
+                          size: 12,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          castName,
+                          style: GoogleFonts.montserrat(
+                              color: Colors.grey, fontSize: 18),
+                        ),
+                      ],
                     ),
                   );
                 },
