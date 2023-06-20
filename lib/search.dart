@@ -20,7 +20,7 @@ class _SearchState extends State<Search> {
   final _formKey = GlobalKey<FormState>();
   String _name = '';
   List<dynamic> users = [];
-  List<dynamic> reversed = [];
+  List<dynamic> reversedlist = [];
   bool isLoading = true;
 
   @override
@@ -70,7 +70,7 @@ class _SearchState extends State<Search> {
                   : ListView.builder(
                       itemCount: users.length,
                       itemBuilder: (context, index) {
-                        final user = reversed[index];
+                        final user = reversedlist[index];
                         final title = user['jawSummary']['title'];
                         final photo =
                             user['jawSummary']['backgroundImage']['url'];
@@ -179,7 +179,7 @@ class _SearchState extends State<Search> {
       {
         'query': widget.searchtext,
         'offset': '0',
-        'limit_titles': '3',
+        'limit_titles': '10',
         'limit_suggestions': '1',
       },
     );
@@ -195,7 +195,7 @@ class _SearchState extends State<Search> {
 
     setState(() {
       users = json["titles"];
-      reversed = users.reversed.toList();
+      reversedlist = users.reversed.toList();
       isLoading = false;
     });
   }

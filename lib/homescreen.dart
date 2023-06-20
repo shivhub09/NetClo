@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/fetchdata.dart';
 import 'package:netflix_clone/profile.dart';
 import 'package:netflix_clone/search.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,6 +14,15 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String _text = '';
+  late String choices;
+  List<String> listofchoices = [];
+  @override
+  void initState() {
+    getStringFromSharedPreferences();
+    listofchoices = choices.split(";");
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -164,25 +174,30 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 40,
-                          vertical: 5,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Row(
-                          children: [
-                            const Icon(
-                              Icons.play_arrow_rounded,
-                            ),
-                            const Text(
-                              "Play",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ],
+                      GestureDetector(
+                        onTap: () {
+                          print(choices);
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 40,
+                            vertical: 5,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Row(
+                            children: [
+                              const Icon(
+                                Icons.play_arrow_rounded,
+                              ),
+                              const Text(
+                                "Play",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       Column(
@@ -203,6 +218,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             DataWidget(text: "Popular on Netflix"),
+            // Expanded(
+            //   child: ListView.builder(
+            //       itemCount: listofchoices.length,
+            //       itemBuilder: ((context, index) {
+            //         return DataWidget(text: listofchoices[index]);
+            //       })),
+            // ),
             DataWidget(text: "korean"),
             DataWidget(text: "hindi"),
             DataWidget(text: "anime"),
@@ -210,5 +232,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  void getStringFromSharedPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    choices = prefs.getString("choices") ?? '';
   }
 }

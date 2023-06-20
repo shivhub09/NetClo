@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_clone/choices.dart';
 import 'package:netflix_clone/homescreen.dart';
 import 'package:netflix_clone/login.dart';
 
@@ -51,28 +52,6 @@ class _SignUpState extends State<SignUp> {
               fit: BoxFit.fill,
             ),
           ),
-          // Positioned(
-          //   left: 0,
-          //   top: 150,
-          //   child: Container(
-          //     margin: EdgeInsets.fromLTRB(15, 0, 0, 0),
-          //     child: Column(
-          //       crossAxisAlignment: CrossAxisAlignment.start,
-          //       children: [
-          //         Text(
-          //           "Hello!",
-          //           style:
-          //               GoogleFonts.bebasNeue(color: Colors.red, fontSize: 50),
-          //         ),
-          //         Text(
-          //           "TUDUM!!!",
-          //           style: GoogleFonts.bebasNeue(
-          //               color: Colors.white, fontSize: 50),
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
           Positioned(
             bottom: 50,
             child: GestureDetector(
@@ -80,7 +59,7 @@ class _SignUpState extends State<SignUp> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomeScreen(),
+                    builder: (context) => Choices(),
                   ),
                 );
               },
@@ -88,7 +67,7 @@ class _SignUpState extends State<SignUp> {
                 padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
                 width: 300,
                 decoration: BoxDecoration(
-                    color: Colors.red, borderRadius: BorderRadius.circular(10)),
+                    color: Colors.red, borderRadius: BorderRadius.circular(8)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -97,7 +76,7 @@ class _SignUpState extends State<SignUp> {
                         "Get Started",
                         style: GoogleFonts.montserrat(
                             color: Colors.white,
-                            fontSize: 18,
+                            fontSize: 20,
                             fontWeight: FontWeight.w100),
                       ),
                     ),
@@ -114,4 +93,6 @@ class _SignUpState extends State<SignUp> {
       ),
     );
   }
+
+
 }

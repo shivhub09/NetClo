@@ -28,6 +28,7 @@ class _DataWidgetState extends State<DataWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       child: Column(
         children: [
           Padding(
