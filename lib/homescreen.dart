@@ -15,11 +15,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String _text = '';
   late String choices;
-  List<String> listofchoices = [];
+  late List<String> listofchoices;
   @override
   void initState() {
     getStringFromSharedPreferences();
-    listofchoices = choices.split(";");
     // TODO: implement initState
     super.initState();
   }
@@ -225,6 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
             //         return DataWidget(text: listofchoices[index]);
             //       })),
             // ),
+
             DataWidget(text: "korean"),
             DataWidget(text: "hindi"),
             DataWidget(text: "anime"),
@@ -234,8 +234,9 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void getStringFromSharedPreferences() async {
+  Future<void> getStringFromSharedPreferences() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     choices = prefs.getString("choices") ?? '';
+    listofchoices = choices.split(";");
   }
 }
