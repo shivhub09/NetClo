@@ -217,14 +217,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             DataWidget(text: "Popular on Netflix"),
-            // Expanded(
-            //   child: ListView.builder(
-            //       itemCount: listofchoices.length,
-            //       itemBuilder: ((context, index) {
-            //         return DataWidget(text: listofchoices[index]);
-            //       })),
-            // ),
-
             DataWidget(text: "korean"),
             DataWidget(text: "hindi"),
             DataWidget(text: "anime"),

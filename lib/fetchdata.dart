@@ -68,11 +68,11 @@ class _DataWidgetState extends State<DataWidget> {
                           Icons.keyboard_arrow_right,
                           color: Colors.red,
                           size: 50,
-                        )
+                        ),
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),

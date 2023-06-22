@@ -41,18 +41,18 @@ class _LoginState extends State<Login> {
           ),
 
           Positioned(
-              top: 200,
-              left: 20,
-              child: Container(
-                height: 60,
-                width: 300,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.red, width: 2),
-                    borderRadius: BorderRadius.circular(50)),
-              )),
+            top: 200,
+            left: 20,
+            child: Container(
+              height: 60,
+              width: 300,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.red, width: 2),
+                  borderRadius: BorderRadius.circular(50)),
+            ),
+          ),
           // form field here
-
           Positioned(
             top: 300,
             left: 20,
@@ -66,16 +66,17 @@ class _LoginState extends State<Login> {
           ),
 
           Positioned(
-              top: 350,
-              left: 20,
-              child: Container(
-                height: 60,
-                width: 300,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.red, width: 2),
-                    borderRadius: BorderRadius.circular(50)),
-              )),
+            top: 350,
+            left: 20,
+            child: Container(
+              height: 60,
+              width: 300,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.red, width: 2),
+                  borderRadius: BorderRadius.circular(50)),
+            ),
+          ),
           Positioned(
             top: 450,
             child: GestureDetector(
@@ -107,7 +108,7 @@ class _LoginState extends State<Login> {
                     Icon(
                       Icons.arrow_forward_ios_outlined,
                       color: Colors.white,
-                    )
+                    ),
                   ],
                 ),
               ),

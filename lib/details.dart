@@ -135,7 +135,7 @@ class _DetailsState extends State<Details> {
                           color: Colors.grey,
                           size: 10,
                         ),
-                      )
+                      ),
                     ],
                   );
                 },

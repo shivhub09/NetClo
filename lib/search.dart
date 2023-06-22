@@ -17,15 +17,12 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  final _formKey = GlobalKey<FormState>();
-  String _name = '';
   List<dynamic> users = [];
   List<dynamic> reversedlist = [];
   bool isLoading = true;
 
   @override
   void initState() {
-    // TODO: implement initState
     fetchdata();
     super.initState();
   }
@@ -35,13 +32,13 @@ class _SearchState extends State<Search> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
               child: Container(
-                decoration: BoxDecoration(color: Colors.black),
+                decoration: const BoxDecoration(color: Colors.black),
                 height: 70,
                 child: Image.asset(
                   "assets/netflix logo.png",
@@ -59,10 +56,10 @@ class _SearchState extends State<Search> {
                 ),
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Expanded(
               child: isLoading
-                  ? Center(
+                  ? const Center(
                       child: CircularProgressIndicator(
                         color: Colors.red,
                       ),
@@ -131,7 +128,7 @@ class _SearchState extends State<Search> {
                                 height: 280,
                                 width: 160,
                                 child: Container(
-                                  margin: EdgeInsets.symmetric(vertical: 8),
+                                  margin: const EdgeInsets.symmetric(vertical: 8),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
