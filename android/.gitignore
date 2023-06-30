@@ -10,4 +10,4 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
-api.dart
+lib/safe.dart
