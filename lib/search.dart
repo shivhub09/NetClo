@@ -179,7 +179,7 @@ class _SearchState extends State<Search> {
         'query': widget.searchtext,
         'offset': '0',
         'limit_titles': '8',
-        'limit_suggestions': '',
+        'limit_suggestions': '1',
       },
     );
 
