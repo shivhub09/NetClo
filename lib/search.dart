@@ -7,8 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:netflix_clone/details.dart';
-import 'package:netflix_clone/safe.dart';
-import 'safe.dart';
+import 'package:netflix_clone/privacy.dart';
 
 class Search extends StatefulWidget {
   late String searchtext;

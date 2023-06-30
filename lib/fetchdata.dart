@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/apicall.dart';
 import 'package:http/http.dart' as http;
 import 'package:netflix_clone/details.dart';
-import 'safe.dart';
+import 'package:netflix_clone/privacy.dart';
 
 class DataWidget extends StatefulWidget {
   final String text;

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/details.dart';
-import 'safe.dart';
+import 'package:netflix_clone/privacy.dart';
 
 class MyWidget extends StatefulWidget {
   final String text;
