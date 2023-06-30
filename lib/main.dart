@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/apicall.dart';
 import 'package:netflix_clone/signup.dart';
 
 void main() {

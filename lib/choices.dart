@@ -11,7 +11,6 @@ class Choices extends StatefulWidget {
 }
 
 class _ChoicesState extends State<Choices> {
-  bool? _isChecked = false;
   late String selectedGenresString;
   List<bool> genreSelections = List.filled(30, false);
   List<String> netflixGenres = [

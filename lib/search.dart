@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:netflix_clone/details.dart';
 import 'package:netflix_clone/privacy.dart';
 
+// ignore: must_be_immutable
 class Search extends StatefulWidget {
   late String searchtext;
   Search({required this.searchtext});
