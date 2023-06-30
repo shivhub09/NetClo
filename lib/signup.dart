@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:netflix_clone/login.dart';
+import 'package:netflix_clone/homescreen.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class _SignUpState extends State<SignUp> {
     return Scaffold(
       body: Stack(
         alignment: Alignment.center,
-        fit: StackFit.expand, 
+        fit: StackFit.expand,
         children: [
           Stack(
             alignment: Alignment.center,
@@ -23,8 +23,7 @@ class _SignUpState extends State<SignUp> {
             children: [
               Image.asset(
                 "assets/background.jpg",
-                fit: BoxFit
-                    .cover,
+                fit: BoxFit.cover,
               ),
               Positioned.fill(
                 child: Container(
@@ -57,7 +56,7 @@ class _SignUpState extends State<SignUp> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const Login(),
+                    builder: (context) => HomeScreen(),
                   ),
                 );
               },
@@ -91,6 +90,4 @@ class _SignUpState extends State<SignUp> {
       ),
     );
   }
-
-
 }

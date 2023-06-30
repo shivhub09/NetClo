@@ -182,7 +182,7 @@ class _SearchState extends State<Search> {
     );
 
     final headers = {
-      'X-RapidAPI-Key': '682d0337cemshd966d21fce23698p19ef72jsn6d730c813e9f',
+      'X-RapidAPI-Key': '2bc4734294msh9a6f39f794484e3p1785cbjsn26e47015da1a ',
       'X-RapidAPI-Host': 'netflix-data.p.rapidapi.com',
     };
 
