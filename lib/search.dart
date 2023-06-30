@@ -20,7 +20,7 @@ class _SearchState extends State<Search> {
   List<dynamic> users = [];
   List<dynamic> reversedlist = [];
   bool isLoading = true;
-
+  String api = "true";
   @override
   void initState() {
     fetchdata();
@@ -182,7 +182,7 @@ class _SearchState extends State<Search> {
     );
 
     final headers = {
-      'X-RapidAPI-Key': '2bc4734294msh9a6f39f794484e3p1785cbjsn26e47015da1a ',
+      'X-RapidAPI-Key': api,
       'X-RapidAPI-Host': 'netflix-data.p.rapidapi.com',
     };
 

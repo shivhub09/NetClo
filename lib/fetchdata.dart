@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/apicall.dart';
 import 'package:http/http.dart' as http;
@@ -17,6 +18,7 @@ class DataWidget extends StatefulWidget {
 }
 
 class _DataWidgetState extends State<DataWidget> {
+  String? apiKey = dotenv.env['API_KEY'];
   List<dynamic> users = [];
   bool isLoading = true;
   @override
@@ -176,11 +178,11 @@ class _DataWidgetState extends State<DataWidget> {
     );
 
     final headers = {
-      'X-RapidAPI-Key': '682d0337cemshd966d21fce23698p19ef72jsn6d730c813e9f',
+      'X-RapidAPI-Key': apiKey,
       'X-RapidAPI-Host': 'netflix-data.p.rapidapi.com',
     };
 
-    final response = await http.get(url, headers: headers);
+    final response = await http.get(url);
     final body = response.body;
     final json = jsonDecode(body);
 

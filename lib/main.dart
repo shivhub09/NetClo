@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/apicall.dart';
 import 'package:netflix_clone/signup.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+void main() async{
+  await dotenv.load();
   runApp(const MyApp());
 }
 
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:  SignUp(),
+      home: SignUp(),
     );
   }
 }
