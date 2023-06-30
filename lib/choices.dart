@@ -11,7 +11,9 @@ class Choices extends StatefulWidget {
 }
 
 class _ChoicesState extends State<Choices> {
+  bool? _isChecked = false;
   late String selectedGenresString;
+  List<bool> genreSelections = List.filled(30, false);
   List<String> netflixGenres = [
     "Action & Adventure",
     "Anime",
@@ -45,7 +47,6 @@ class _ChoicesState extends State<Choices> {
     "Classic Movies",
   ];
 
-  List<bool> genreSelections = List.filled(30, false);
   List<String> selectedGenres = [];
   @override
   Widget build(BuildContext context) {
@@ -53,55 +54,51 @@ class _ChoicesState extends State<Choices> {
       backgroundColor: Colors.black,
       body: Column(
         children: [
-          Image.asset(
-            "assets/withoutbg.png",
-            fit: BoxFit.fill,
-            height: 100,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+            child: Image.asset(
+              "assets/withoutbg.png",
+              fit: BoxFit.fill,
+              height: 100,
+            ),
           ),
           Expanded(
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // Set the number of columns
-              ),
+            child: ListView.builder(
+              shrinkWrap: true,
               itemCount: netflixGenres.length,
               itemBuilder: (context, index) {
                 return Container(
                   margin: EdgeInsets.all(10),
+                  // padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
                   decoration: BoxDecoration(
                       color: Colors.red,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Transform.scale(
-                        scale: 1.5,
-                        child: Checkbox(
-                          visualDensity: VisualDensity.adaptivePlatformDensity,
-                          shape: const CircleBorder(),
-                          value: genreSelections[index],
-                          onChanged: (bool? value) {
-                            setState(() {
-                              genreSelections[index] = value!;
-                              if (value!) {
-                                selectedGenres.add(netflixGenres[index]);
-                              } else {
-                                selectedGenres.remove(netflixGenres[index]);
-                              }
-                            });
-                          },
-                          activeColor: Colors
-                              .black, // Change the active color of the checkbox
-                          checkColor: Colors.white,
-                          materialTapTargetSize: MaterialTapTargetSize
-                              .shrinkWrap, // Reduce the size of the tap target
-                        ),
-                      ),
-                      Text(
-                        netflixGenres[index],
-                        style: GoogleFonts.bebasNeue(
-                            color: Colors.white, fontSize: 20),
-                      ),
-                    ],
+                      borderRadius: BorderRadius.circular(15)),
+                  child: CheckboxListTile(
+                    value: genreSelections[index],
+                    onChanged: (bool? newValue) {
+                      setState(() {
+                        genreSelections[index] = newValue ?? false;
+                        if (genreSelections[index] == true) {
+                          selectedGenres.add(netflixGenres[index]);
+                        }
+
+                        if (genreSelections[index] == false) {
+                          if (selectedGenres.contains(netflixGenres[index])) {
+                            selectedGenres.remove(netflixGenres[index]);
+                          } else {
+                            print(netflixGenres[index]);
+                          }
+                          ;
+                        }
+                      });
+                    },
+                    activeColor: Colors.white,
+                    checkColor: Colors.black,
+                    title: Text(
+                      netflixGenres[index],
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    tristate: true,
                   ),
                 );
               },
@@ -112,10 +109,8 @@ class _ChoicesState extends State<Choices> {
           ),
           GestureDetector(
             onTap: () {
-              print(selectedGenres[0]);
               savedata();
               print(selectedGenresString);
-
               Navigator.push(
                 context,
                 MaterialPageRoute(

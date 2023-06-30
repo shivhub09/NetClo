@@ -15,11 +15,20 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String _text = '';
   late String choices;
-  late List<String> listofchoices;
+  late List<String> finalchoices;
+
+  Future<void> fetchStringFromSharedPreferences() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    choices = prefs.getString("choices") ?? '';
+    final List<String> listofchoices = choices.split(";");
+    setState(() {
+      finalchoices = listofchoices;
+    });
+  }
+
   @override
   void initState() {
-    getStringFromSharedPreferences();
-    // TODO: implement initState
+    fetchStringFromSharedPreferences();
     super.initState();
   }
 
@@ -27,12 +36,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SingleChildScrollView(
-        child: Column(
+      body: ListView(children: [
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: const EdgeInsets.fromLTRB(10, 35, 10, 0),
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
               height: 450,
               decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -174,9 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                       GestureDetector(
-                        onTap: () {
-                          print(choices);
-                        },
+                        onTap: () {},
                         child: Container(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 40,
@@ -217,18 +224,24 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             DataWidget(text: "Popular on Netflix"),
-            DataWidget(text: "korean"),
-            DataWidget(text: "hindi"),
-            DataWidget(text: "anime"),
+            ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: finalchoices.length,
+              itemBuilder: (context, index) {
+                return DataWidget(text: finalchoices[index]);
+              },
+            )
           ],
         ),
-      ),
+      ]),
     );
   }
 
-  Future<void> getStringFromSharedPreferences() async {
+  Future<List<String>> getStringFromSharedPreferences() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     choices = prefs.getString("choices") ?? '';
-    listofchoices = choices.split(";");
+    List<String> listofchoices = choices.split(";");
+    return listofchoices;
   }
 }

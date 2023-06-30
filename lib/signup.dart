@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_clone/choices.dart';
 import 'package:netflix_clone/homescreen.dart';
 
 class SignUp extends StatefulWidget {
@@ -56,7 +57,7 @@ class _SignUpState extends State<SignUp> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomeScreen(),
+                    builder: (context) => Choices(),
                   ),
                 );
               },
