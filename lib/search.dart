@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:netflix_clone/details.dart';
+import 'package:netflix_clone/safe.dart';
+import 'safe.dart';
 
 class Search extends StatefulWidget {
   late String searchtext;
@@ -20,7 +22,7 @@ class _SearchState extends State<Search> {
   List<dynamic> users = [];
   List<dynamic> reversedlist = [];
   bool isLoading = true;
-  String api = "true";
+
   @override
   void initState() {
     fetchdata();
@@ -128,7 +130,8 @@ class _SearchState extends State<Search> {
                                 height: 280,
                                 width: 160,
                                 child: Container(
-                                  margin: const EdgeInsets.symmetric(vertical: 8),
+                                  margin:
+                                      const EdgeInsets.symmetric(vertical: 8),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -176,13 +179,13 @@ class _SearchState extends State<Search> {
       {
         'query': widget.searchtext,
         'offset': '0',
-        'limit_titles': '10',
-        'limit_suggestions': '1',
+        'limit_titles': '8',
+        'limit_suggestions': '',
       },
     );
 
     final headers = {
-      'X-RapidAPI-Key': api,
+      'X-RapidAPI-Key': apiKey,
       'X-RapidAPI-Host': 'netflix-data.p.rapidapi.com',
     };
 

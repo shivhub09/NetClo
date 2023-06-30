@@ -4,7 +4,6 @@ import 'package:netflix_clone/fetchdata.dart';
 import 'package:netflix_clone/profile.dart';
 import 'package:netflix_clone/search.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -17,7 +16,6 @@ class _HomeScreenState extends State<HomeScreen> {
   String _text = '';
   late String choices;
   late List<String> listofchoices;
-
   @override
   void initState() {
     getStringFromSharedPreferences();

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/details.dart';
+import 'safe.dart';
 
 class MyWidget extends StatefulWidget {
   final String text;
@@ -147,13 +148,13 @@ class _MyWidgetState extends State<MyWidget> {
       {
         'query': widget.text,
         'offset': '0',
-        'limit_titles': '50',
-        'limit_suggestions': '50',
+        'limit_titles': '20',
+        'limit_suggestions': '1',
       },
     );
 
     final headers = {
-      'X-RapidAPI-Key': '682d0337cemshd966d21fce23698p19ef72jsn6d730c813e9f',
+      'X-RapidAPI-Key': apiKey,
       'X-RapidAPI-Host': 'netflix-data.p.rapidapi.com',
     };
 
