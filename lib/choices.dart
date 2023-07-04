@@ -68,7 +68,6 @@ class _ChoicesState extends State<Choices> {
               itemBuilder: (context, index) {
                 return Container(
                   margin: EdgeInsets.all(10),
-                  // padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
                   decoration: BoxDecoration(
                       color: Colors.red,
                       borderRadius: BorderRadius.circular(15)),
