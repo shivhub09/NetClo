@@ -21,7 +21,7 @@ class _ChoicesState extends State<Choices> {
     "Crime",
     "Documentary",
     "Drama",
-    "Fantasy",
+    "Fantasyds",
     "Historical",
     "Horror",
     "LGBTQ+",

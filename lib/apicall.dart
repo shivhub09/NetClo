@@ -86,6 +86,7 @@ class _MyWidgetState extends State<MyWidget> {
                           List<String> cast = castlist
                               .map((item) => item["name"] as String)
                               .toList();
+                          int id = user['summary']['id'];
                           return GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -98,6 +99,7 @@ class _MyWidgetState extends State<MyWidget> {
                                     logoimgurl: logoimgurl,
                                     genres: genrelist,
                                     castlist: cast,
+                                    id: id,
                                   ),
                                 ),
                               );

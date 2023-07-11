@@ -91,6 +91,7 @@ class _SearchState extends State<Search> {
                         List<String> cast = castlist
                             .map((item) => item["name"] as String)
                             .toList();
+                        int id = user['summary']['id'];
                         return SizedBox(
                           child: Row(
                             children: [
@@ -101,6 +102,7 @@ class _SearchState extends State<Search> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: GestureDetector(
                                     onTap: () {
+                                      print("id is : ${id}");
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
@@ -111,6 +113,7 @@ class _SearchState extends State<Search> {
                                             logoimgurl: logoimgurl,
                                             genres: genrelist,
                                             castlist: cast,
+                                            id: id,
                                           ),
                                         ),
                                       );

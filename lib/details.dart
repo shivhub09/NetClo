@@ -10,6 +10,7 @@ class Details extends StatefulWidget {
   final String logoimgurl;
   final List<String> genres;
   final List<String> castlist;
+  final int id;
 
   Details({
     required this.title,
@@ -18,6 +19,7 @@ class Details extends StatefulWidget {
     required this.logoimgurl,
     required this.genres,
     required this.castlist,
+    required this.id,
   });
 
   @override
@@ -148,6 +150,27 @@ class _DetailsState extends State<Details> {
                 style: GoogleFonts.montserrat(color: Colors.grey, fontSize: 18),
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  child: Text(
+                    "Seasons",
+                    style: GoogleFonts.bebasNeue(
+                        color: Colors.white, fontSize: 30),
+                  ),
+                ),
+                Icon(
+                  Icons.keyboard_arrow_right,
+                  color: Colors.red,
+                  size: 50,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 15),
               child: Text(
@@ -162,7 +185,7 @@ class _DetailsState extends State<Details> {
                   final castName = widget.castlist[index];
                   return Container(
                     margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                    padding: EdgeInsets.fromLTRB(5, 0, 10, 5),
+                    padding: EdgeInsets.fromLTRB(5, 0, 10, 0),
                     child: Row(
                       children: [
                         Icon(
