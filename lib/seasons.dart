@@ -18,6 +18,7 @@ class Seasons extends StatefulWidget {
 class _SeasonsState extends State<Seasons> {
   List<String> shortNames = [];
   List<int> episodes = [];
+  List<int> seasonId = [];
 
   @override
   void initState() {
@@ -54,6 +55,11 @@ class _SeasonsState extends State<Seasons> {
                             style: GoogleFonts.bebasNeue(
                                 color: Colors.white, fontSize: 30),
                           ),
+                          // Text(
+                          //   seasonId[index].toString(),
+                          //   style: GoogleFonts.bebasNeue(
+                          //       color: Colors.white, fontSize: 30),
+                          // ),
                           GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -100,10 +106,13 @@ class _SeasonsState extends State<Seasons> {
         for (var item in data) {
           if (item['seasons'] is List) {
             for (var season in item['seasons']) {
-              if (season['shortName'] is String && season['length'] is int) {
+              if (season['shortName'] is String &&
+                  season['length'] is int &&
+                  season['length'] is int) {
                 setState(() {
                   shortNames.add(season['shortName']);
                   episodes.add(season['length']);
+                  seasonId.add(season['seasonId']);
                 });
               }
             }
@@ -116,5 +125,6 @@ class _SeasonsState extends State<Seasons> {
 
     print(shortNames);
     print(episodes);
+    print(seasonId);
   }
 }
