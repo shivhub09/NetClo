@@ -66,7 +66,9 @@ class _SeasonsState extends State<Seasons> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Episodes(),
+                                  builder: (context) => Episodes(
+                                    episodeid: seasonId[index],
+                                  ),
                                 ),
                               );
                             },

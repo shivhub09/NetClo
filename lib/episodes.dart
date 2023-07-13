@@ -1,11 +1,14 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/privacy.dart';
 import 'package:http/http.dart' as http;
 
 class Episodes extends StatefulWidget {
-  const Episodes({super.key});
+  final int episodeid;
+
+  Episodes({required this.episodeid});
 
   @override
   State<Episodes> createState() => _EpisodesState();
@@ -23,6 +26,7 @@ class _EpisodesState extends State<Episodes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Container(
           child: Column(
         children: [
@@ -34,11 +38,18 @@ class _EpisodesState extends State<Episodes> {
                   final title = episode["title"];
                   final imageurl = episode["interestingMoment"]["_342x192"]
                       ["webp"]["value"]["url"];
-                  return Column(
-                    children: [
-                      Text(title),
-                      Image.network(imageurl),
-                    ],
+                  return Container(
+                    margin: EdgeInsets.only(bottom: 10),
+                    child: Column(
+                      children: [
+                        Text(title,
+                            style: GoogleFonts.bebasNeue(
+                                color: Colors.white, fontSize: 20)),
+                        ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.network(imageurl)),
+                      ],
+                    ),
                   );
                 })),
           )
@@ -49,7 +60,11 @@ class _EpisodesState extends State<Episodes> {
 
   void fetchData() async {
     var url = Uri.parse('https://netflix-data.p.rapidapi.com/season/episodes/');
-    var queryParams = {'ids': '80186799', 'offset': '0', 'limit': '25'};
+    var queryParams = {
+      'ids': widget.episodeid.toString(),
+      'offset': '0',
+      'limit': '25'
+    };
     var headers = {
       'X-RapidAPI-Key': apiKey,
       'X-RapidAPI-Host': 'netflix-data.p.rapidapi.com',
@@ -57,7 +72,6 @@ class _EpisodesState extends State<Episodes> {
 
     var response = await http.get(url.replace(queryParameters: queryParams),
         headers: headers);
-    // print(response.body);
 
     final json = jsonDecode(response.body);
     episodes = json[0]["episodes"];
