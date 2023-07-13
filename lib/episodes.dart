@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/privacy.dart';
@@ -75,7 +74,5 @@ class _EpisodesState extends State<Episodes> {
 
     final json = jsonDecode(response.body);
     episodes = json[0]["episodes"];
-    print(episodes.length);
-    print(episodes[0]["title"]);
   }
 }
