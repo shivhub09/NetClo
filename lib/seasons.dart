@@ -56,11 +56,6 @@ class _SeasonsState extends State<Seasons> {
                             style: GoogleFonts.bebasNeue(
                                 color: Colors.white, fontSize: 30),
                           ),
-                          // Text(
-                          //   seasonId[index].toString(),
-                          //   style: GoogleFonts.bebasNeue(
-                          //       color: Colors.white, fontSize: 30),
-                          // ),
                           GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -68,6 +63,7 @@ class _SeasonsState extends State<Seasons> {
                                 MaterialPageRoute(
                                   builder: (context) => Episodes(
                                     episodeid: seasonId[index],
+                                    seasonid: index + 1,
                                   ),
                                 ),
                               );
