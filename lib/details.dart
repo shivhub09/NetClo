@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/apicall.dart';
+import 'package:netflix_clone/seasons.dart';
 
 class Details extends StatefulWidget {
   final String title;
@@ -161,10 +162,20 @@ class _DetailsState extends State<Details> {
                         color: Colors.white, fontSize: 30),
                   ),
                 ),
-                Icon(
-                  Icons.keyboard_arrow_right,
-                  color: Colors.red,
-                  size: 50,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Seasons(),
+                      ),
+                    );
+                  },
+                  child: Icon(
+                    Icons.keyboard_arrow_right,
+                    color: Colors.red,
+                    size: 50,
+                  ),
                 ),
               ],
             ),
