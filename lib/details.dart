@@ -167,7 +167,7 @@ class _DetailsState extends State<Details> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Seasons(),
+                        builder: (context) => Seasons(title : widget.title, id:widget.id),
                       ),
                     );
                   },

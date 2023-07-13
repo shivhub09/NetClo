@@ -1,10 +1,15 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:netflix_clone/privacy.dart';
 
 class Seasons extends StatefulWidget {
-  const Seasons({super.key});
+  final String title;
+  final int id;
+
+  Seasons({required this.title, required this.id});
 
   @override
   State<Seasons> createState() => _SeasonsState();
@@ -13,24 +18,76 @@ class Seasons extends StatefulWidget {
 class _SeasonsState extends State<Seasons> {
   List<String> shortNames = [];
   List<int> episodes = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: FloatingActionButton(onPressed: fetchData),
-      ),
-    );
+        backgroundColor: Colors.black,
+        body: Container(
+            child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 50),
+              child: Text(
+                widget.title,
+                style: GoogleFonts.bebasNeue(color: Colors.white, fontSize: 30),
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: shortNames.length,
+                  itemBuilder: ((context, index) {
+                    return Container(
+                      margin: EdgeInsets.only(left: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Season ${index + 1}",
+                            style: GoogleFonts.bebasNeue(
+                                color: Colors.white, fontSize: 30),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Seasons(
+                                      title: widget.title, id: widget.id),
+                                ),
+                              );
+                            },
+                            child: Icon(
+                              Icons.keyboard_arrow_right,
+                              color: Colors.red,
+                              size: 50,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  })),
+            )
+          ],
+        )));
   }
 
   void fetchData() async {
     var url = Uri.parse('https://netflix-data.p.rapidapi.com/title/seasons/');
     var queryParams = {
-      'ids': '80057281',
+      'ids': widget.id.toString(),
       'offset': '0',
       'limit': '25',
     };
     var headers = {
-      'X-RapidAPI-Key': '2bc4734294msh9a6f39f794484e3p1785cbjsn26e47015da1a',
+      'X-RapidAPI-Key': apiKey,
       'X-RapidAPI-Host': 'netflix-data.p.rapidapi.com',
     };
 
@@ -58,5 +115,6 @@ class _SeasonsState extends State<Seasons> {
     }
 
     print(shortNames);
+    print(episodes);
   }
 }
