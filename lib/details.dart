@@ -6,6 +6,8 @@ import 'package:netflix_clone/apicall.dart';
 import 'package:netflix_clone/privacy2.dart';
 import 'package:netflix_clone/seasons.dart';
 import 'package:http/http.dart' as http;
+import 'package:netflix_clone/youtube.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Details extends StatefulWidget {
   final String title;
@@ -78,7 +80,12 @@ class _DetailsState extends State<Details> {
             ),
             GestureDetector(
               onTap: () {
-                fetchdatayt();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Youtubeplayer(ytid: '2RVnrBLOBcI'),
+                  ),
+                );
               },
               child: Container(
                 margin: const EdgeInsets.only(
@@ -256,7 +263,7 @@ class _DetailsState extends State<Details> {
     );
 
     final headers = {
-      'X-RapidAPI-Key': apikey2,
+      'X-RapidAPI-Key': '',
       'X-RapidAPI-Host': 'streamlinewatch-streaming-guide.p.rapidapi.com',
     };
 
