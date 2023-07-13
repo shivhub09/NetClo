@@ -13,22 +13,33 @@ class Episodes extends StatefulWidget {
 
 class _EpisodesState extends State<Episodes> {
   List<dynamic> episodes = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
           child: Column(
         children: [
-          FloatingActionButton(onPressed: () {
-            fetchData();
-          }),
           Expanded(
             child: ListView.builder(
                 itemCount: episodes.length,
                 itemBuilder: ((context, index) {
                   final episode = episodes[index];
                   final title = episode["title"];
-                  return Text(title);
+                  final imageurl = episode["interestingMoment"]["_342x192"]
+                      ["webp"]["value"]["url"];
+                  return Column(
+                    children: [
+                      Text(title),
+                      Image.network(imageurl),
+                    ],
+                  );
                 })),
           )
         ],
