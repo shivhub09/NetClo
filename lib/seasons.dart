@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:netflix_clone/episodes.dart';
 import 'package:netflix_clone/privacy.dart';
 
 class Seasons extends StatefulWidget {
@@ -65,8 +66,7 @@ class _SeasonsState extends State<Seasons> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Seasons(
-                                      title: widget.title, id: widget.id),
+                                  builder: (context) => Episodes(),
                                 ),
                               );
                             },
