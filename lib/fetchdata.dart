@@ -104,7 +104,7 @@ class _DataWidgetState extends State<DataWidget> {
                     List<String> cast =
                         castlist.map((item) => item["name"] as String).toList();
                     int id = user['summary']['id'];
-                   
+                    final type = user["summary"]['type'];
                     return GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -118,6 +118,7 @@ class _DataWidgetState extends State<DataWidget> {
                               genres: genrelist,
                               castlist: cast,
                               id: id,
+                              type: type,
                             ),
                           ),
                         );

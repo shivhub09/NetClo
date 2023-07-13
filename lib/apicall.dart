@@ -66,6 +66,8 @@ class _MyWidgetState extends State<MyWidget> {
                         itemCount: users.length,
                         itemBuilder: (context, index) {
                           final user = users[index];
+                                              final type = user["summary"]['type'];
+
                           final title = user['jawSummary']['title'];
                           final photo =
                               user['jawSummary']['backgroundImage']['url'];
@@ -100,6 +102,7 @@ class _MyWidgetState extends State<MyWidget> {
                                     genres: genrelist,
                                     castlist: cast,
                                     id: id,
+                                    type: type,
                                   ),
                                 ),
                               );

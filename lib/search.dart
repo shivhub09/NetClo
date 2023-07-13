@@ -9,7 +9,6 @@ import 'package:http/http.dart' as http;
 import 'package:netflix_clone/details.dart';
 import 'package:netflix_clone/privacy.dart';
 
-// ignore: must_be_immutable
 class Search extends StatefulWidget {
   late String searchtext;
   Search({required this.searchtext});
@@ -74,7 +73,6 @@ class _SearchState extends State<Search> {
                         final photo =
                             user['jawSummary']['backgroundImage']['url'];
                         final description = user['jawSummary']['synopsis'];
-                        final type = user['summary']['type'];
                         final imageurl =
                             user['jawSummary']['backgroundImage']['url'];
                         final logoimgurl =
@@ -92,6 +90,8 @@ class _SearchState extends State<Search> {
                             .map((item) => item["name"] as String)
                             .toList();
                         int id = user['summary']['id'];
+                        final type2 = user["summary"]['type'];
+
                         return SizedBox(
                           child: Row(
                             children: [
@@ -114,6 +114,7 @@ class _SearchState extends State<Search> {
                                             genres: genrelist,
                                             castlist: cast,
                                             id: id,
+                                            type: type2,
                                           ),
                                         ),
                                       );
@@ -145,7 +146,7 @@ class _SearchState extends State<Search> {
                                             fontSize: 25, color: Colors.white),
                                       ),
                                       Text(
-                                        type,
+                                        type2,
                                         style: GoogleFonts.montserrat(
                                           fontSize: 18,
                                           color: Colors.red,

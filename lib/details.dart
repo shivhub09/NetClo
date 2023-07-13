@@ -1,8 +1,11 @@
+import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/apicall.dart';
+import 'package:netflix_clone/privacy2.dart';
 import 'package:netflix_clone/seasons.dart';
+import 'package:http/http.dart' as http;
 
 class Details extends StatefulWidget {
   final String title;
@@ -12,6 +15,7 @@ class Details extends StatefulWidget {
   final List<String> genres;
   final List<String> castlist;
   final int id;
+  final String type;
 
   Details({
     required this.title,
@@ -21,6 +25,7 @@ class Details extends StatefulWidget {
     required this.genres,
     required this.castlist,
     required this.id,
+    required this.type,
   });
 
   @override
@@ -28,6 +33,15 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
+  String youtubetitle = "";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    fetchdatayt();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,29 +76,34 @@ class _DetailsState extends State<Details> {
                 ),
               ],
             ),
-            Container(
-              margin: const EdgeInsets.only(
-                  left: 30, right: 30, top: 10, bottom: 10),
-              padding: const EdgeInsets.only(top: 5, bottom: 5),
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(
-                    Icons.play_arrow,
-                    color: Colors.white,
-                  ),
-                  Text(
-                    "Play",
-                    style: GoogleFonts.montserrat(
+            GestureDetector(
+              onTap: () {
+                fetchdatayt();
+              },
+              child: Container(
+                margin: const EdgeInsets.only(
+                    left: 30, right: 30, top: 10, bottom: 10),
+                padding: const EdgeInsets.only(top: 5, bottom: 5),
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.play_arrow,
                       color: Colors.white,
-                      fontWeight: FontWeight.bold,
                     ),
-                  ),
-                ],
+                    Text(
+                      "Play",
+                      style: GoogleFonts.montserrat(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             Container(
@@ -167,7 +186,8 @@ class _DetailsState extends State<Details> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Seasons(title : widget.title, id:widget.id),
+                        builder: (context) =>
+                            Seasons(title: widget.title, id: widget.id),
                       ),
                     );
                   },
@@ -222,5 +242,40 @@ class _DetailsState extends State<Details> {
         ),
       ),
     );
+  }
+
+  void fetchdatayt() async {
+    final url = Uri.https(
+      'streamlinewatch-streaming-guide.p.rapidapi.com',
+      '/search/',
+      {
+        'type': widget.type,
+        'query': widget.title,
+        'limit': '1',
+      },
+    );
+
+    final headers = {
+      'X-RapidAPI-Key': apikey2,
+      'X-RapidAPI-Host': 'streamlinewatch-streaming-guide.p.rapidapi.com',
+    };
+
+    final response = await http.get(url, headers: headers);
+    final body = response.body;
+    final json = jsonDecode(body);
+
+    final ytid = json[0]["_id"];
+
+    final url2 = Uri.https(
+      'streamlinewatch-streaming-guide.p.rapidapi.com',
+      '/shows/${ytid}',
+      {'platform': 'web', 'region': 'US'},
+    );
+
+    final response2 = await http.get(url2, headers: headers);
+    final body2 = response2.body;
+    final json2 = jsonDecode(body2);
+
+    youtubetitle = json2[0]["youtube_trailer"];
   }
 }
