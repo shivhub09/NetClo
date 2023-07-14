@@ -6,7 +6,7 @@ import 'package:netflix_clone/screens/details.dart';
 import 'package:netflix_clone/privacy.dart';
 
 class Search extends StatefulWidget {
-  late String searchtext;
+  final String searchtext;
   Search({required this.searchtext});
 
   @override

@@ -65,8 +65,6 @@ class _EpisodesState extends State<Episodes> {
                         final title = episode["title"];
                         final imageurl = episode["interestingMoment"]
                             ["_342x192"]["webp"]["value"]["url"];
-                        final description =
-                            episode["contextualSynopsis"]["text"];
                         return Container(
                           margin: EdgeInsets.only(bottom: 10),
                           child: Column(
