@@ -176,7 +176,7 @@ class _DataWidgetState extends State<DataWidget> {
         'query': widget.text,
         'offset': '0',
         'limit_titles': '8',
-        'limit_suggestions': '10',
+        'limit_suggestions': '1',
       },
     );
 

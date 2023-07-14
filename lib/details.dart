@@ -40,7 +40,6 @@ class _DetailsState extends State<Details> {
   @override
   void initState() {
     // TODO: implement initState
-    fetchdatayt();
     super.initState();
   }
 
@@ -80,10 +79,11 @@ class _DetailsState extends State<Details> {
             ),
             GestureDetector(
               onTap: () {
+                fetchdatayt();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Youtubeplayer(ytid: '2RVnrBLOBcI'),
+                    builder: (context) => Youtubeplayer(ytid: youtubetitle, title: widget.title,desc: widget.desc,),
                   ),
                 );
               },
@@ -190,6 +190,7 @@ class _DetailsState extends State<Details> {
                 ),
                 GestureDetector(
                   onTap: () {
+                    fetchdatayt();
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -263,7 +264,7 @@ class _DetailsState extends State<Details> {
     );
 
     final headers = {
-      'X-RapidAPI-Key': '',
+      'X-RapidAPI-Key': apikey2,
       'X-RapidAPI-Host': 'streamlinewatch-streaming-guide.p.rapidapi.com',
     };
 
@@ -284,5 +285,6 @@ class _DetailsState extends State<Details> {
     final json2 = jsonDecode(body2);
 
     youtubetitle = json2[0]["youtube_trailer"];
+    print(youtubetitle);
   }
 }

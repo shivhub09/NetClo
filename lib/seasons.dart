@@ -88,7 +88,7 @@ class _SeasonsState extends State<Seasons> {
     var queryParams = {
       'ids': widget.id.toString(),
       'offset': '0',
-      'limit': '25',
+      'limit': '5',
     };
     var headers = {
       'X-RapidAPI-Key': apiKey,

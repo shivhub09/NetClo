@@ -66,7 +66,7 @@ class _MyWidgetState extends State<MyWidget> {
                         itemCount: users.length,
                         itemBuilder: (context, index) {
                           final user = users[index];
-                                              final type = user["summary"]['type'];
+                          final type = user["summary"]['type'];
 
                           final title = user['jawSummary']['title'];
                           final photo =
@@ -153,7 +153,7 @@ class _MyWidgetState extends State<MyWidget> {
       {
         'query': widget.text,
         'offset': '0',
-        'limit_titles': '20',
+        'limit_titles': '8',
         'limit_suggestions': '1',
       },
     );
