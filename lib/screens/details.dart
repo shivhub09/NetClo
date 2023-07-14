@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:netflix_clone/apicall.dart';
+import 'package:netflix_clone/universal/apicall.dart';
 import 'package:netflix_clone/privacy2.dart';
-import 'package:netflix_clone/seasons.dart';
+import 'package:netflix_clone/screens/seasons.dart';
 import 'package:http/http.dart' as http;
-import 'package:netflix_clone/youtube.dart';
+import 'package:netflix_clone/screens/youtube.dart';
 
 class Details extends StatefulWidget {
   final String title;

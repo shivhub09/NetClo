@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:netflix_clone/fetchdata.dart';
+import 'package:netflix_clone/universal/fetchdata.dart';
 import 'package:netflix_clone/profile.dart';
-import 'package:netflix_clone/search.dart';
+import 'package:netflix_clone/screens/search.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
