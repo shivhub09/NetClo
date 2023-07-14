@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/signup.dart';
+import 'package:netflix_clone/getstarted.dart';
 
 void main() {
   runApp(const MyApp());
