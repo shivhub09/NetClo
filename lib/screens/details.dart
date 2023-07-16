@@ -327,13 +327,26 @@ class _DetailsState extends State<Details> {
 
   Future<void> addwish() async {
     String wishtitletoadd = widget.title;
-    String posterurltoadd = widget.logoimgurl;
+    String posterurltoadd = widget.backgroundimg;
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    String wishtitle = prefs.getString("wishtitle") ?? '';
-    String posterurl = prefs.getString("wishphoto") ?? '';
-    String savetitle = wishtitle + ";" + wishtitletoadd;
-    String saveurl = posterurl + ";" + posterurltoadd;
+    String wishtitle = prefs.getString("wishlisttitles") ?? '';
+    String posterurl = prefs.getString("wishlistphotos") ?? '';
 
-    await prefs.setString("wishtitle", savetitle);
+    if (wishtitle.contains(wishtitletoadd)) {
+      print("already there");
+    } else if (wishtitle.isEmpty) {
+      wishtitle = wishtitletoadd;
+      posterurl = posterurltoadd;
+      await prefs.setString("wishlisttitles", wishtitle);
+      await prefs.setString("wishlistphotos", posterurl);
+      print("list was empty ");
+      print(posterurl);
+    } else {
+      String savetitle = wishtitle + ";" + wishtitletoadd;
+      String saveurl = posterurl + ";" + posterurltoadd;
+      await prefs.setString("wishlisttitles", savetitle);
+      await prefs.setString("wishlistphotos", saveurl);
+      print(saveurl);
+    }
   }
 }
