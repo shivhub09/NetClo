@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_clone/authentication/login.dart';
 import 'package:netflix_clone/authentication/signup.dart';
 import 'package:netflix_clone/screens/choices.dart';
 
@@ -81,31 +82,47 @@ ANYTIME.""",
             bottom: 0,
             child: Row(
               children: [
-                Container(
-                  padding: EdgeInsets.only(top: 20, bottom: 20),
-                  width: 195,
-                  decoration: BoxDecoration(color: Colors.white),
-                  child: Center(
-                    child: Text(
-                      "Login",
-                      style: GoogleFonts.montserrat(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Login()),
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.only(top: 20, bottom: 20),
+                    width: 195,
+                    decoration: const BoxDecoration(color: Colors.white),
+                    child: Center(
+                      child: Text(
+                        "Login",
+                        style: GoogleFonts.montserrat(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.only(top: 20, bottom: 20),
-                  width: 195,
-                  decoration: BoxDecoration(color: Colors.red),
-                  child: Center(
-                    child: Text(
-                      "Start Free Month",
-                      style: GoogleFonts.montserrat(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const SignUp()),
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.only(top: 20, bottom: 20),
+                    width: 195,
+                    decoration: const BoxDecoration(color: Colors.red),
+                    child: Center(
+                      child: Text(
+                        "Start Free Month",
+                        style: GoogleFonts.montserrat(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),

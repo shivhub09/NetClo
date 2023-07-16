@@ -4,14 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/screens/choices.dart';
 import 'package:netflix_clone/screens/homescreen.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<Login> createState() => _LoginState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _LoginState extends State<Login> {
   TextEditingController _passwordEditingController = TextEditingController();
   TextEditingController _emailEditingController = TextEditingController();
 
@@ -54,27 +54,6 @@ class _SignUpState extends State<SignUp> {
             child: Image.asset(
               "assets/withoutbg.png",
               fit: BoxFit.fill,
-            ),
-          ),
-          Positioned(
-            top: 300,
-            left: 20,
-            child: SizedBox(
-              width: 350,
-              child: TextField(
-                style: GoogleFonts.montserrat(color: Colors.white),
-                decoration: InputDecoration(
-                  hintText: 'Username',
-                  hintStyle: GoogleFonts.montserrat(color: Colors.white),
-                  prefixIcon: const Icon(
-                    Icons.person,
-                    color: Colors.white,
-                  ),
-                  enabledBorder: const UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey, width: 2),
-                  ),
-                ),
-              ),
             ),
           ),
 
@@ -138,19 +117,19 @@ class _SignUpState extends State<SignUp> {
                       MaterialStateProperty.all<Color>(Colors.white),
                 ),
                 onPressed: () {
-                  FirebaseAuth.instance
-                      .createUserWithEmailAndPassword(
+                  FirebaseAuth.instance.signInWithEmailAndPassword
+                      (
                           email: _emailEditingController.text,
                           password: _passwordEditingController.text)
                       .then((value) => {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Choices()))
+                                    builder: (context) => HomeScreen()))
                           });
                 },
                 child: Text(
-                  "Sign Up",
+                  "Login",
                   style: GoogleFonts.montserrat(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
