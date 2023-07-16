@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_clone/authentication/signup.dart';
 import 'package:netflix_clone/screens/choices.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
+class GetStarted extends StatefulWidget {
+  const GetStarted({Key? key}) : super(key: key);
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<GetStarted> createState() => _GetStartedState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _GetStartedState extends State<GetStarted> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,47 +44,72 @@ class _SignUpState extends State<SignUp> {
           ),
           Positioned(
             height: 80,
-            top: 30,
+            top: 200,
+            left: 20,
             child: Image.asset(
               "assets/withoutbg.png",
               fit: BoxFit.fill,
             ),
           ),
           Positioned(
-            bottom: 50,
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Choices(),
+              top: 300,
+              left: 20,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    """WATCH
+TV SHOWS &
+MOVIES
+ANYWHERE.
+ANYTIME.""",
+                    style: GoogleFonts.montserrat(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w900,
+                        fontSize: 40),
                   ),
-                );
-              },
-              child: Container(
-                padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-                width: 300,
-                decoration: BoxDecoration(
-                    color: Colors.red, borderRadius: BorderRadius.circular(8)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: Text(
-                        "Get Started",
-                        style: GoogleFonts.montserrat(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w100),
-                      ),
+                  Text(
+                    "Plans from \$7.99 a month.",
+                    style: GoogleFonts.montserrat(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                  )
+                ],
+              )),
+          Positioned(
+            bottom: 0,
+            child: Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(top: 20, bottom: 20),
+                  width: 195,
+                  decoration: BoxDecoration(color: Colors.white),
+                  child: Center(
+                    child: Text(
+                      "Login",
+                      style: GoogleFonts.montserrat(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold),
                     ),
-                    const Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      color: Colors.white,
-                    )
-                  ],
+                  ),
                 ),
-              ),
+                Container(
+                  padding: EdgeInsets.only(top: 20, bottom: 20),
+                  width: 195,
+                  decoration: BoxDecoration(color: Colors.red),
+                  child: Center(
+                    child: Text(
+                      "Start Free Month",
+                      style: GoogleFonts.montserrat(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
