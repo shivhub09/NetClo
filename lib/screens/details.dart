@@ -1,12 +1,13 @@
 import 'dart:convert';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_clone/screens/wishlist.dart';
 import 'package:netflix_clone/universal/apicall.dart';
 import 'package:netflix_clone/privacy2.dart';
 import 'package:netflix_clone/screens/seasons.dart';
 import 'package:http/http.dart' as http;
 import 'package:netflix_clone/screens/youtube.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Details extends StatefulWidget {
   final String title;
@@ -38,7 +39,6 @@ class _DetailsState extends State<Details> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -76,41 +76,79 @@ class _DetailsState extends State<Details> {
                 ),
               ],
             ),
-            GestureDetector(
-              onTap: () {
-                fetchdatayt();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Youtubeplayer(ytid: youtubetitle, title: widget.title,desc: widget.desc,),
-                  ),
-                );
-              },
-              child: Container(
-                margin: const EdgeInsets.only(
-                    left: 30, right: 30, top: 10, bottom: 10),
-                padding: const EdgeInsets.only(top: 5, bottom: 5),
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.play_arrow,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "Play",
-                      style: GoogleFonts.montserrat(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+            Column(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    fetchdatayt();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Youtubeplayer(
+                          ytid: youtubetitle,
+                          title: widget.title,
+                          desc: widget.desc,
+                        ),
                       ),
+                    );
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(
+                        left: 30, right: 30, top: 10, bottom: 10),
+                    padding: const EdgeInsets.only(top: 5, bottom: 5),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(5),
                     ),
-                  ],
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.play_arrow,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          "Play",
+                          style: GoogleFonts.montserrat(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
+                GestureDetector(
+                  onTap: () {
+                    addwish();
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(
+                        left: 30, right: 30, top: 5, bottom: 10),
+                    padding: const EdgeInsets.only(top: 5, bottom: 5),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.library_add,
+                          color: Colors.red,
+                        ),
+                        Text(
+                          " WishList",
+                          style: GoogleFonts.montserrat(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
             Container(
               margin: EdgeInsets.only(left: 15),
@@ -285,5 +323,17 @@ class _DetailsState extends State<Details> {
 
     youtubetitle = json2[0]["youtube_trailer"];
     print(youtubetitle);
+  }
+
+  Future<void> addwish() async {
+    String wishtitletoadd = widget.title;
+    String posterurltoadd = widget.logoimgurl;
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String wishtitle = prefs.getString("wishtitle") ?? '';
+    String posterurl = prefs.getString("wishphoto") ?? '';
+    String savetitle = wishtitle + ";" + wishtitletoadd;
+    String saveurl = posterurl + ";" + posterurltoadd;
+
+    await prefs.setString("wishtitle", savetitle);
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_clone/screens/wishlist.dart';
 import 'package:netflix_clone/universal/fetchdata.dart';
 import 'package:netflix_clone/profile.dart';
 import 'package:netflix_clone/screens/search.dart';
@@ -94,14 +95,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
                           ),
-                          Container(
-                            margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                            child: const Text(
-                              "My List",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Wishlist()));
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                              child: const Text(
+                                "My List",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
                         ],
