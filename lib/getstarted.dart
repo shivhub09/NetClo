@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/authentication/login.dart';
 import 'package:netflix_clone/authentication/signup.dart';
-import 'package:netflix_clone/screens/choices.dart';
 
 class GetStarted extends StatefulWidget {
   const GetStarted({Key? key}) : super(key: key);
