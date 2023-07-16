@@ -12,8 +12,8 @@ class Wishlist extends StatefulWidget {
 class _WishlistState extends State<Wishlist> {
   late String titles;
   late String photourl;
-  late List<String> listoftitle;
-  late List<String> listofurls;
+  List<String> listoftitle = [];
+  List<String> listofurls = [];
 
   @override
   void initState() {
@@ -99,9 +99,15 @@ class _WishlistState extends State<Wishlist> {
                                             fontSize: 20,
                                           ),
                                         ),
-                                        Icon(
-                                          Icons.delete_rounded,
-                                          color: Colors.white,
+                                        GestureDetector(
+                                          onTap: () {
+                                            delete(listoftitle[index],
+                                                photourl[index]);
+                                          },
+                                          child: Icon(
+                                            Icons.delete_rounded,
+                                            color: Colors.white,
+                                          ),
                                         )
                                       ],
                                     ),
@@ -122,8 +128,13 @@ class _WishlistState extends State<Wishlist> {
     );
   }
 
-  void delete(){
-    
+  Future<void> delete(String title, String photurl) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String titles2 = prefs.getString("wishlisttitles") ?? '';
+    String photourl2 = prefs.getString("wishlistphotos") ?? '';
+    titles2.replaceAll(title + ";", '');
+    photourl2.replaceAll(photourl2 + ";", '');
+    print(titles2);
+    print(photourl2);
   }
-
 }
