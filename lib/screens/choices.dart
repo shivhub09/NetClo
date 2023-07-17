@@ -67,7 +67,7 @@ class _ChoicesState extends State<Choices> {
               itemCount: netflixGenres.length,
               itemBuilder: (context, index) {
                 return Container(
-                  margin: EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       color: Colors.red,
                       borderRadius: BorderRadius.circular(15)),
@@ -94,7 +94,7 @@ class _ChoicesState extends State<Choices> {
                     checkColor: Colors.black,
                     title: Text(
                       netflixGenres[index],
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                     ),
                     tristate: true,
                   ),
@@ -102,7 +102,7 @@ class _ChoicesState extends State<Choices> {
               },
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           GestureDetector(
@@ -112,12 +112,12 @@ class _ChoicesState extends State<Choices> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Login(),
+                  builder: (context) => const Login(),
                 ),
               );
             },
             child: Container(
-              padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
+              padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
               width: 300,
               decoration: BoxDecoration(
                   color: Colors.red, borderRadius: BorderRadius.circular(8)),
@@ -134,7 +134,7 @@ class _ChoicesState extends State<Choices> {
                       ),
                     ),
                   ),
-                  Icon(
+                  const Icon(
                     Icons.arrow_forward_ios_outlined,
                     color: Colors.white,
                   )

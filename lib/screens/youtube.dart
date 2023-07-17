@@ -22,7 +22,7 @@ class _YoutubeplayerState extends State<Youtubeplayer> {
 
     _controller = YoutubePlayerController(
       initialVideoId: widget.ytid,
-      flags: YoutubePlayerFlags(
+      flags: const YoutubePlayerFlags(
         autoPlay: true,
         mute: false,
         isLive: false,
@@ -37,7 +37,7 @@ class _YoutubeplayerState extends State<Youtubeplayer> {
         controller: _controller,
         showVideoProgressIndicator: true,
         progressIndicatorColor: Colors.amber,
-        progressColors: ProgressBarColors(
+        progressColors: const ProgressBarColors(
           playedColor: Colors.red,
           handleColor: Colors.white,
         ),
@@ -51,7 +51,7 @@ class _YoutubeplayerState extends State<Youtubeplayer> {
               children: [
                 player,
                 Container(
-                  margin: EdgeInsets.only(left: 15, top: 10),
+                  margin: const EdgeInsets.only(left: 15, top: 10),
                   child: Text(
                     widget.title,
                     style: GoogleFonts.bebasNeue(
@@ -61,7 +61,7 @@ class _YoutubeplayerState extends State<Youtubeplayer> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                   child: Text(
                     widget.desc,
                     style: GoogleFonts.montserrat(

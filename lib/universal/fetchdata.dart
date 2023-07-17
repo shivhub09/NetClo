@@ -62,7 +62,7 @@ class _DataWidgetState extends State<DataWidget> {
                             fontSize: 30,
                           ),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.keyboard_arrow_right,
                           color: Colors.red,
                           size: 50,
@@ -128,7 +128,7 @@ class _DataWidgetState extends State<DataWidget> {
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               width: 200,
-                              margin: EdgeInsets.all(8),
+                              margin: const EdgeInsets.all(8),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(12),
                                 child: Image.network(
@@ -152,7 +152,7 @@ class _DataWidgetState extends State<DataWidget> {
                   },
                 ),
                 if (isLoading)
-                  Center(
+                  const Center(
                     child: CircularProgressIndicator(
                       color: Colors.red,
                     ), // Circular loading indicator

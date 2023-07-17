@@ -47,7 +47,7 @@ class _EpisodesState extends State<Episodes> {
                 future: _fetchEpisodesFuture,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(
                         color: Colors.red,
                       ),
@@ -66,7 +66,7 @@ class _EpisodesState extends State<Episodes> {
                         final imageurl = episode["interestingMoment"]
                             ["_342x192"]["webp"]["value"]["url"];
                         return Container(
-                          margin: EdgeInsets.only(bottom: 10),
+                          margin: const EdgeInsets.only(bottom: 10),
                           child: Column(
                             children: [
                               Padding(

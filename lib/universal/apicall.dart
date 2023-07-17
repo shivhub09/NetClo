@@ -33,7 +33,7 @@ class _MyWidgetState extends State<MyWidget> {
             children: [
               Center(
                 child: Container(
-                  decoration: BoxDecoration(color: Colors.black),
+                  decoration: const BoxDecoration(color: Colors.black),
                   height: 70,
                   child: Image.asset(
                     "assets/netflix logo.png",
@@ -53,7 +53,7 @@ class _MyWidgetState extends State<MyWidget> {
               ),
               Expanded(
                 child: isLoading
-                    ? Center(
+                    ? const Center(
                         child: CircularProgressIndicator(
                           color: Colors.red,
                         ),
@@ -115,7 +115,7 @@ class _MyWidgetState extends State<MyWidget> {
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                     width: 200,
-                                    margin: EdgeInsets.all(8),
+                                    margin: const EdgeInsets.all(8),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(12),
                                       child: Image.network(

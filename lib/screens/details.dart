@@ -150,7 +150,7 @@ class _DetailsState extends State<Details> {
               ],
             ),
             Container(
-              margin: EdgeInsets.only(left: 15),
+              margin: const EdgeInsets.only(left: 15),
               child: Text(
                 widget.title,
                 style: GoogleFonts.bebasNeue(
@@ -161,7 +161,7 @@ class _DetailsState extends State<Details> {
             ),
             Container(
               height: 30,
-              margin: EdgeInsets.only(left: 15),
+              margin: const EdgeInsets.only(left: 15),
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: widget.genres.length,
@@ -181,11 +181,11 @@ class _DetailsState extends State<Details> {
                           );
                         },
                         child: Container(
-                          padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                          padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
                           decoration: BoxDecoration(
                               color: Colors.red,
                               borderRadius: BorderRadius.circular(15)),
-                          margin: EdgeInsets.only(left: 0, right: 10),
+                          margin: const EdgeInsets.only(left: 0, right: 10),
                           child: Text(
                             genreName,
                             style: GoogleFonts.montserrat(
@@ -194,8 +194,8 @@ class _DetailsState extends State<Details> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(right: 10),
-                        child: Icon(
+                        margin: const EdgeInsets.only(right: 10),
+                        child: const Icon(
                           Icons.circle,
                           color: Colors.grey,
                           size: 10,
@@ -207,7 +207,7 @@ class _DetailsState extends State<Details> {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: Text(
                 widget.desc,
                 style: GoogleFonts.montserrat(color: Colors.grey, fontSize: 18),
@@ -217,7 +217,7 @@ class _DetailsState extends State<Details> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
                     "Seasons",
                     style: GoogleFonts.bebasNeue(
@@ -235,7 +235,7 @@ class _DetailsState extends State<Details> {
                       ),
                     );
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.keyboard_arrow_right,
                     color: Colors.red,
                     size: 50,
@@ -243,11 +243,11 @@ class _DetailsState extends State<Details> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 15),
+              margin: const EdgeInsets.symmetric(horizontal: 15),
               child: Text(
                 "Cast",
                 style: GoogleFonts.bebasNeue(color: Colors.white, fontSize: 30),
@@ -259,16 +259,16 @@ class _DetailsState extends State<Details> {
                 itemBuilder: (context, index) {
                   final castName = widget.castlist[index];
                   return Container(
-                    margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                    padding: EdgeInsets.fromLTRB(5, 0, 10, 0),
+                    margin: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(5, 0, 10, 0),
                     child: Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.circle,
                           color: Colors.white,
                           size: 12,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(

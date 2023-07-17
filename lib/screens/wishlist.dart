@@ -40,7 +40,7 @@ class _WishlistState extends State<Wishlist> {
           children: [
             Center(
               child: Container(
-                margin: EdgeInsets.only(top: 20),
+                margin: const EdgeInsets.only(top: 20),
                 decoration: const BoxDecoration(color: Colors.black),
                 height: 90,
                 child: Image.asset(
@@ -85,7 +85,7 @@ class _WishlistState extends State<Wishlist> {
                                   ),
                                 ),
                               Container(
-                                margin: EdgeInsets.only(left: 10),
+                                margin: const EdgeInsets.only(left: 10),
                                 child: Column(
                                   children: [
                                     Row(
@@ -104,7 +104,7 @@ class _WishlistState extends State<Wishlist> {
                                             delete(listoftitle[index],
                                                 photourl[index]);
                                           },
-                                          child: Icon(
+                                          child: const Icon(
                                             Icons.delete_rounded,
                                             color: Colors.white,
                                           ),

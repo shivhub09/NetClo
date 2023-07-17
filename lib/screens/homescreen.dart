@@ -67,12 +67,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Profile(),
+                                  builder: (context) => const Profile(),
                                 ),
                               );
                             },
                             child: Container(
-                              padding: EdgeInsetsDirectional.all(6),
+                              padding: const EdgeInsetsDirectional.all(6),
                               decoration: BoxDecoration(
                                   color: Colors.black,
                                   borderRadius: BorderRadius.circular(30)),
@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Wishlist()));
+                                      builder: (context) => const Wishlist()));
                             },
                             child: Container(
                               margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
@@ -118,11 +118,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                       Container(
-                        margin: EdgeInsets.symmetric(vertical: 10),
+                        margin: const EdgeInsets.symmetric(vertical: 10),
                         child: SizedBox(
                           height: 50,
                           child: Container(
-                            margin: EdgeInsets.symmetric(
+                            margin: const EdgeInsets.symmetric(
                               horizontal: 20,
                             ),
                             decoration: BoxDecoration(
@@ -160,9 +160,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 hintText: 'Search',
                                 hintStyle:
                                     GoogleFonts.montserrat(color: Colors.grey),
-                                icon: Padding(
+                                icon: const Padding(
                                   padding:
-                                      const EdgeInsets.fromLTRB(10, 8, 10, 8),
+                                      EdgeInsets.fromLTRB(10, 8, 10, 8),
                                   child: Icon(
                                     Icons.search,
                                     color: Colors.white,
@@ -179,13 +179,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Column(
+                      const Column(
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.add,
                             color: Colors.white,
                           ),
-                          const Text(
+                          Text(
                             "My List",
                             style: TextStyle(
                               color: Colors.white,
@@ -204,12 +204,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          child: Row(
+                          child: const Row(
                             children: [
-                              const Icon(
+                              Icon(
                                 Icons.play_arrow_rounded,
                               ),
-                              const Text(
+                              Text(
                                 "Play",
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
@@ -217,13 +217,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      Column(
+                      const Column(
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.info_outline,
                             color: Colors.white,
                           ),
-                          const Text(
+                          Text(
                             "Info",
                             style: TextStyle(color: Colors.white),
                           ),
@@ -236,7 +236,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             DataWidget(text: "Popular on Netflix"),
             ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: finalchoices.length,
               itemBuilder: (context, index) {

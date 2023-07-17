@@ -35,7 +35,7 @@ class _SeasonsState extends State<Seasons> {
             child: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 50),
+              margin: const EdgeInsets.only(top: 50),
               child: Text(
                 widget.title,
                 style: GoogleFonts.bebasNeue(color: Colors.white, fontSize: 30),
@@ -46,7 +46,7 @@ class _SeasonsState extends State<Seasons> {
                   itemCount: shortNames.length,
                   itemBuilder: ((context, index) {
                     return Container(
-                      margin: EdgeInsets.only(left: 10),
+                      margin: const EdgeInsets.only(left: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -67,7 +67,7 @@ class _SeasonsState extends State<Seasons> {
                                 ),
                               );
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.keyboard_arrow_right,
                               color: Colors.red,
                               size: 50,
