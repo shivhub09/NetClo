@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:netflix_clone/screens/homescreen.dart';
+import 'package:netflix_clone/authentication/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Choices extends StatefulWidget {
@@ -112,7 +112,7 @@ class _ChoicesState extends State<Choices> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => HomeScreen(),
+                  builder: (context) => Login(),
                 ),
               );
             },

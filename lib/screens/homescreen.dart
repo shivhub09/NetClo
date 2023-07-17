@@ -7,7 +7,9 @@ import 'package:netflix_clone/screens/search.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  final String email;
+
+  HomeScreen({required this.email});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

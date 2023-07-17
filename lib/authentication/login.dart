@@ -11,8 +11,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController _passwordEditingController = TextEditingController();
-  TextEditingController _emailEditingController = TextEditingController();
+  final TextEditingController _passwordEditingController =
+      TextEditingController();
+  final TextEditingController _emailEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -116,15 +117,15 @@ class _LoginState extends State<Login> {
                       MaterialStateProperty.all<Color>(Colors.white),
                 ),
                 onPressed: () {
-                  FirebaseAuth.instance.signInWithEmailAndPassword
-                      (
+                  FirebaseAuth.instance
+                      .signInWithEmailAndPassword(
                           email: _emailEditingController.text,
                           password: _passwordEditingController.text)
                       .then((value) => {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HomeScreen()))
+                                    builder: (context) => HomeScreen(email: _emailEditingController.text)))
                           });
                 },
                 child: Text(
