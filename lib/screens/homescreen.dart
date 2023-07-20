@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_clone/screens/tvshows.dart';
 import 'package:netflix_clone/screens/wishlist.dart';
 import 'package:netflix_clone/universal/fetchdata.dart';
 import 'package:netflix_clone/profile.dart';
@@ -83,12 +84,20 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                           ),
-                          const Text(
-                            "TV Shows",
-                            style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => TvShows()));
+                            },
+                            child: const Text(
+                              "TV Shows",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                           const Text(
                             "Movies",
@@ -161,8 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 hintStyle:
                                     GoogleFonts.montserrat(color: Colors.grey),
                                 icon: const Padding(
-                                  padding:
-                                      EdgeInsets.fromLTRB(10, 8, 10, 8),
+                                  padding: EdgeInsets.fromLTRB(10, 8, 10, 8),
                                   child: Icon(
                                     Icons.search,
                                     color: Colors.white,
