@@ -328,23 +328,23 @@ class _DetailsState extends State<Details> {
     String wishtitletoadd = widget.title;
     String posterurltoadd = widget.backgroundimg;
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    String wishtitle = prefs.getString("wishlisttitles") ?? '';
-    String posterurl = prefs.getString("wishlistphotos") ?? '';
+    String wishtitle = prefs.getString("wishlisttitless") ?? '';
+    String posterurl = prefs.getString("wishlistphotoss") ?? '';
 
     if (wishtitle.contains(wishtitletoadd)) {
       print("already there");
     } else if (wishtitle.isEmpty) {
       wishtitle = wishtitletoadd;
       posterurl = posterurltoadd;
-      await prefs.setString("wishlisttitles", wishtitle);
-      await prefs.setString("wishlistphotos", posterurl);
+      await prefs.setString("wishlisttitless", wishtitle);
+      await prefs.setString("wishlistphotoss", posterurl);
       print("list was empty ");
       print(posterurl);
     } else {
       String savetitle = wishtitle + ";" + wishtitletoadd;
       String saveurl = posterurl + ";" + posterurltoadd;
-      await prefs.setString("wishlisttitles", savetitle);
-      await prefs.setString("wishlistphotos", saveurl);
+      await prefs.setString("wishlisttitless", savetitle);
+      await prefs.setString("wishlistphotoss", saveurl);
       print(saveurl);
     }
   }

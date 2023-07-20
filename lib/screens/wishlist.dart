@@ -24,9 +24,9 @@ class _WishlistState extends State<Wishlist> {
   Future<void> fetchStringFromSharedPreferences() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      titles = prefs.getString("wishlisttitles") ?? '';
+      titles = prefs.getString("wishlisttitless") ?? '';
       listoftitle = titles.split(";");
-      photourl = prefs.getString("wishlistphotos") ?? '';
+      photourl = prefs.getString("wishlistphotoss") ?? '';
       listofurls = photourl.split(";");
     });
   }
@@ -69,52 +69,35 @@ class _WishlistState extends State<Wishlist> {
                       itemBuilder: ((context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              if (listofurls[index] != '')
-                                SizedBox(
-                                  height: 280,
-                                  width: 200,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(12),
-                                    child: Image.network(
-                                      listofurls[index],
-                                      fit: BoxFit.cover,
-                                      alignment: Alignment.center,
+                          child: GestureDetector(
+                            onTap: () {
+                              delete(listoftitle[index], listofurls[index]);
+                            },
+                            child: Row(
+                              children: [
+                                if (listofurls[index] != '')
+                                  SizedBox(
+                                    height: 280,
+                                    width: 200,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12),
+                                      child: Image.network(
+                                        listofurls[index],
+                                        fit: BoxFit.cover,
+                                        alignment: Alignment.center,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              Container(
-                                margin: const EdgeInsets.only(left: 10),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          listoftitle[index],
-                                          style: GoogleFonts.bebasNeue(
-                                            color: Colors.white,
-                                            fontSize: 20,
-                                          ),
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            delete(listoftitle[index],
-                                                photourl[index]);
-                                          },
-                                          child: const Icon(
-                                            Icons.delete_rounded,
-                                            color: Colors.white,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
+                                Flexible(
+                                    child: Text(
+                                  listoftitle[index],
+                                  style: GoogleFonts.bebasNeue(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
+                                ))
+                              ],
+                            ),
                           ),
                         );
                       }),
@@ -130,11 +113,20 @@ class _WishlistState extends State<Wishlist> {
 
   Future<void> delete(String title, String photurl) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    String titles2 = prefs.getString("wishlisttitles") ?? '';
-    String photourl2 = prefs.getString("wishlistphotos") ?? '';
-    titles2.replaceAll(title + ";", '');
-    photourl2.replaceAll(photourl2 + ";", '');
+    String titles2 = prefs.getString("wishlisttitless") ?? '';
+    String photourl2 = prefs.getString("wishlistphotoss") ?? '';
+    List<String> listoftitles2 = titles2.split(";");
+    List<String> listofurls2 = photourl2.split(";");
+
+    listoftitles2.remove(title);
+    listofurls2.remove(photourl);
+
+    String titles22 = listoftitles2.join(";");
+    String photourl22 = listofurls2.join(";");
     print(titles2);
     print(photourl2);
+
+    await prefs.setString("wishlisttitless", titles22);
+    await prefs.setString("wishlistphotoss", photourl22);
   }
 }
