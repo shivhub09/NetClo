@@ -99,12 +99,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
-                          const Text(
-                            "Movies",
-                            style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => TvShows()));
+                            },
+                            child: Text(
+                              "Movies",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                           GestureDetector(
                             onTap: () {
