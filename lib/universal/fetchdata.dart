@@ -185,7 +185,7 @@ class _DataWidgetState extends State<DataWidget> {
     final response = await http.get(url, headers: headers);
     final body = response.body;
     final json = jsonDecode(body);
-
+    print(json);
     setState(() {
       users = json["titles"];
       isLoading = false;
