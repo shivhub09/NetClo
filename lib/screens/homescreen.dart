@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_clone/screens/movies.dart';
 import 'package:netflix_clone/screens/tvshows.dart';
 import 'package:netflix_clone/screens/wishlist.dart';
 import 'package:netflix_clone/universal/fetchdata.dart';
@@ -104,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => TvShows()));
+                                      builder: (context) => Movies()));
                             },
                             child: Text(
                               "Movies",
